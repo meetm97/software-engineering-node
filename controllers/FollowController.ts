@@ -40,7 +40,7 @@
         FollowController.followDao.userFollowsUser(req.params.userid, req.params.uid)
             .then(follows => res.json(follows));
     userUnfollowsUser = (req: Request, res: Response) =>
-            FollowController.followDao.userFollowsUser(req.params.userid, req.params.uid)
+            FollowController.followDao.userUnfollowsUser(req.params.userid, req.params.uid)
                 .then((status) => res.json(status));
 
 
