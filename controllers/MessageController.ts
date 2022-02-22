@@ -17,7 +17,7 @@
     public static getInstance = (app: Express): MessageController => {
         if(MessageController.messageController === null) {
             MessageController.messageController = new MessageController();
-            app.get("/api/users/:uid/messagesent", MessageController.messageController.findAllMessagesSentByUser);
+            app.get("/api/users/:userid/messagesent", MessageController.messageController.findAllMessagesSentByUser);
             app.get("/api/users/:uid/messagesreceived", MessageController.messageController.findAllMessagesReceivedByUser);
             app.post("/api/users/:userid/sendmessage/:uid", MessageController.messageController.userSendsMessage);
             app.delete("/api/users/:userid/deletemessage/:uid", MessageController.messageController.userDeletesMessage);
