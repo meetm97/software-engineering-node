@@ -12,7 +12,7 @@ export default class BookMarkDao implements BookMarkDaoI {
     private constructor() {}
     findAllUsersThatBookMarkedTuit = async (tid: string): Promise<BookMark[]> =>
         BookMarkModel
-            .find({tuit: tid})
+            .find({bookMarkedTuit: tid})
             .populate("bookMarkedBy")
             .exec();
     findAllTuitsBookmarkedByUser = async (uid: string): Promise<BookMark[]> =>
@@ -21,7 +21,7 @@ export default class BookMarkDao implements BookMarkDaoI {
             .populate("bookmark")
             .exec();
     userBookmarkedTuit = async (uid: string, tid: string): Promise<any> =>
-    BookMarkModel.create({tuit: tid, bookMarkedBy: uid});
+    BookMarkModel.create({bookMarkedTuit: tid, bookMarkedBy: uid});
     userUnBookMarksTuit = async (uid: string, tid: string): Promise<any> =>
-    BookMarkModel.deleteOne({tuit: tid, bookMarkedBy: uid});
+    BookMarkModel.deleteOne({bookMarkedTuit: tid, bookMarkedBy: uid});
 }

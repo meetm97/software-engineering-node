@@ -13,6 +13,6 @@
   */
  
  export default interface BookMark {
-     tuit: Tuit,
-     BookMarkedBy: User
+     bookMarkedTuit: Tuit,
+     bookMarkedBy: User
  };
