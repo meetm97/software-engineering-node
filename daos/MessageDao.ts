@@ -21,7 +21,7 @@ export default class MessageDao implements MessageDaoI {
             .populate("from")
             .exec();
     userSendsMessage = async (userid: string, uid: string, message: Message): Promise<any> =>
-        MessageModel.create({...message, to: userid, from: uid});
+        MessageModel.create({...message, from: userid, to: uid});
     userDeletesMessage = async (userid: string, uid: string): Promise<any> =>
         MessageModel.deleteOne({to: userid, from: uid});
 }
