@@ -28,7 +28,7 @@
     private constructor() {}
 
     findAllMessagesSentByUser = (req: Request, res: Response) =>
-        MessageController.messageDao.findAllMessagesSentByUser(req.params.uid)
+        MessageController.messageDao.findAllMessagesSentByUser(req.params.userid)
             .then(messagessent => res.json(messagessent));
  
 
