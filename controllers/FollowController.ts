@@ -42,7 +42,4 @@
     userUnfollowsUser = (req: Request, res: Response) =>
             FollowController.followDao.userUnfollowsUser(req.params.userid, req.params.uid)
                 .then((status) => res.json(status));
-
-
-
  }

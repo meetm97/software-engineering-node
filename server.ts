@@ -5,6 +5,7 @@ import TuitController from "./controllers/TuitController";
 import LikeController from "./controllers/LikeController";
 import BookMarkController from "./controllers/BookMarkController"
 import FollowController from './controllers/FollowController';
+import MessageController from './controllers/MessageController';
 import mongoose from "mongoose";
 
 
@@ -35,6 +36,7 @@ const tuitController = TuitController.getInstance(app);
 const likeController = LikeController.getInstance(app);
 const bookmarkController = BookMarkController.getInstance(app);
 const followController = FollowController.getInstance(app);
+const messageController = MessageController.getInstance(app);
 
 const PORT = 4000;
 app.listen(process.env.PORT || PORT);
