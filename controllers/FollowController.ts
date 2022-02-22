@@ -41,7 +41,7 @@
             .then(follows => res.json(follows));
     userUnfollowsUser = (req: Request, res: Response) =>
             FollowController.followDao.userFollowsUser(req.params.userid, req.params.uid)
-                .then(unfollows => res.json(unfollows));
+                .then(status => res.json(status));
 
 
 
