@@ -18,7 +18,7 @@
   *     <li>DELETE /api/users/:uid/unbookmark/:tid to record that a user
   *     no londer bookamark a tuit</li>
   * </ul>
-  * @property {BookMarkDao} BookMarkDao Singleton DAO implementing likes CRUD operations
+  * @property {BookMarkDao} BookMarkDao Singleton DAO implementing bookmark CRUD operations
   * @property {BookMarkController} BookMarkController Singleton controller implementing
   * RESTful Web service API
   */
@@ -49,7 +49,7 @@
       * @param {Request} req Represents request from client, including the path
       * parameter tid representing the bookmarked tuit
       * @param {Response} res Represents response to client, including the
-      * body formatted as JSON arrays containing the user objects
+      * body formatted as JSON arrays containing the bookmark objects
       */
       findAllUsersThatBookMarkedTuit = (req: Request, res: Response) =>
      BookMarkController.bookmarkDao.findAllUsersThatBookMarkedTuit(req.params.tid)
@@ -60,7 +60,7 @@
       * @param {Request} req Represents request from client, including the path
       * parameter uid representing the user bookmark the tuits
       * @param {Response} res Represents response to client, including the
-      * body formatted as JSON arrays containing the tuit objects that were bookmark
+      * body formatted as JSON arrays containing the bookmark objects that were bookmark by user
       */
       findAllTuitsBookmarkedByUser = (req: Request, res: Response) =>
       BookMarkController.bookmarkDao.findAllTuitsBookmarkedByUser(req.params.uid)
