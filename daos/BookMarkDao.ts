@@ -18,7 +18,7 @@ export default class BookMarkDao implements BookMarkDaoI {
     findAllTuitsBookmarkedByUser = async (uid: string): Promise<BookMark[]> =>
     BookMarkModel
             .find({bookMarkedBy: uid})
-            .populate("bookmark")
+            .populate("bookMarkedTuit")
             .exec();
     userBookmarkedTuit = async (uid: string, tid: string): Promise<any> =>
     BookMarkModel.create({bookMarkedTuit: tid, bookMarkedBy: uid});

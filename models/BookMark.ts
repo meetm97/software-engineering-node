@@ -6,7 +6,7 @@
  import User from "./User";
  
  /**
-  * @typedef Like Represents bookmarks relationship between a user and a tuit,
+  * @typedef BookMark Represents bookmarks relationship between a user and a tuit,
   * as in a user bookmarks a tuit
   * @property {Tuit} tuit Tuit being bookmarked
   * @property {User} BookmarkedBy User bookmarking the tuit
