@@ -39,6 +39,7 @@
     userSendsMessage = (req: Request, res: Response) =>
         MessageController.messageDao.userSendsMessage(req.params.userid, req.params.uid,req.body)
             .then(messagesent => res.json(messagesent));
+
     userDeletesMessage = (req: Request, res: Response) =>
         MessageController.messageDao.userDeletesMessage(req.params.userid, req.params.uid)
             .then((status) => res.json(status));
