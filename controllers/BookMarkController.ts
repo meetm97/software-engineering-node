@@ -34,8 +34,8 @@
      public static getInstance = (app: Express): BookMarkController => {
          if(BookMarkController.bookmarkController === null) {
             BookMarkController.bookmarkController = new BookMarkController();
-             app.get("/api/users/:uid/bookmark", BookMarkController.bookmarkController.findAllUsersThatBookMarkedTuit);
-             app.get("/api/tuits/:tid/bookmark", BookMarkController.bookmarkController.findAllTuitsBookmarkedByUser);
+             app.get("/api/tuits/:tid/bookmark", BookMarkController.bookmarkController.findAllUsersThatBookMarkedTuit);
+             app.get("/api/users/:uid/bookmark", BookMarkController.bookmarkController.findAllTuitsBookmarkedByUser);
              app.post("/api/users/:uid/bookmarks/:tid", BookMarkController.bookmarkController.userBookmarkedTuit);
              app.delete("/api/users/:uid/unbookmark/:tid", BookMarkController.bookmarkController.userUnBookMarksTuit);
          }
