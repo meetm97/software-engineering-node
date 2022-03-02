@@ -21,6 +21,7 @@ import BookMarkController from "./controllers/BookMarkController"
 import FollowController from './controllers/FollowController';
 import MessageController from './controllers/MessageController';
 import mongoose from "mongoose";
+var cors = require('cors')
 
 // connect to database
 const connectionString = `mongodb+srv://meet:meet1234@cluster0.zntvi.mongodb.net/myFirstDatabase?retryWrites=true`;
@@ -36,6 +37,7 @@ mongoose.connection.on("open", function() {
 
 const app = express();
 app.use(express.json());
+app.use(cors());
 
 app.get('/hello', (req, res) =>
 res.send('Hello World!'));
