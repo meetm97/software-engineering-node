@@ -55,7 +55,7 @@
                  UserController.userController.deleteUser);
              app.delete("/api/users",
                  UserController.userController.deleteAllUsers);
-             app.delete("/api/login",
+             app.post("/api/login",
                  UserController.userController.login);
          }
          return UserController.userController;
