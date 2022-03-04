@@ -39,6 +39,8 @@
                  UserController.userController.createUser);
              app.get("/api/users/:uid/delete",
                  UserController.userController.deleteUser);
+             app.get("/api/users/username/:username/delete",
+                 UserController.userController.deleteUsersByUsername);
              app.get("/api/users/delete",
                  UserController.userController.deleteAllUsers);
              
@@ -128,6 +130,10 @@
      deleteAllUsers = (req: Request, res: Response) =>
          UserController.userDao.deleteAllUsers()
              .then((status) => res.send(status));
+
+     deleteUsersByUsername = (req: Request, res: Response) =>
+         UserController.userDao.deleteUsersByUsername(req.params.username)
+             .then(status => res.send(status));
 
      login = (req: Request, res: Response) =>
          UserController.userDao.findUserByCredentials(req.body.username, req.body.password)
