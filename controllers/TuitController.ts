@@ -38,7 +38,7 @@
              app.get("/api/tuits", TuitController.tuitController.findAllTuits);
              app.get("/api/users/:uid/tuits", TuitController.tuitController.findAllTuitsByUser);
              app.get("/api/tuits/:uid", TuitController.tuitController.findTuitById);
-             app.post("/api/users/:uid/tuits", TuitController.tuitController.createTuit);
+             app.post("/api/users/:uid/tuits", TuitController.tuitController.createTuitByUser);
              app.put("/api/tuits/:uid", TuitController.tuitController.updateTuit);
              app.delete("/api/tuits/:uid", TuitController.tuitController.deleteTuit);
          }
@@ -86,8 +86,8 @@
       * body formatted as JSON containing the new tuit that was inserted in the
       * database
       */
-     createTuit = (req: Request, res: Response) =>
-         TuitController.tuitDao.createTuit(req.params.uid, req.body)
+     createTuitByUser = (req: Request, res: Response) =>
+         TuitController.tuitDao.createTuitByUser(req.params.uid, req.body)
              .then((tuit: Tuit) => res.json(tuit));
  
      /**
