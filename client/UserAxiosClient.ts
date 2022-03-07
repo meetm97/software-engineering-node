@@ -18,3 +18,10 @@ const updateUser = async (uid: string, user: User) =>
 const deleteUser = async (uid: string) =>
   await axios.delete(`/users/${uid}`);
 
+const findAllTuits = async () =>
+  await axios.get('/tuits');
+
+const createTuit = async (uid: string) =>
+  await axios.delete(`/users/${uid}/tuits`);
+
+

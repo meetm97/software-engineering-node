@@ -78,4 +78,7 @@
      */
      deleteTuit = async (uid: string): Promise<any> =>
          TuitModel.deleteOne({_id: uid});
- }
+     
+     deleteTuitById = async (tid: string): Promise<any> =>
+         TuitModel.deleteOne({_id: tid});
+}
