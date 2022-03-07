@@ -41,7 +41,7 @@
              app.post("/api/users/:uid/tuits", TuitController.tuitController.createTuitByUser);
              app.put("/api/tuits/:uid", TuitController.tuitController.updateTuit);
              app.delete("/api/tuits/:uid", TuitController.tuitController.deleteTuit);
-             app.get("/api/tuits/:tid", TuitController.tuitController.deleteTuitById);
+             app.get("/api/tuits/delete/:tid", TuitController.tuitController.deleteTuitById);
          }
          return TuitController.tuitController;
      }
