@@ -19,9 +19,6 @@ const updateUser = async (uid: string, user: User) =>
 const deleteUser = async (uid: string) =>
   await axios.delete(`/users/${uid}`);
 
-const deleteTuit = async (tid: string) =>
-  await axios.delete(`/tuits/${tid}`);
-
 const findAllTuits = async () =>
   await axios.get('/tuits');
 
