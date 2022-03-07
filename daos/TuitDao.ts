@@ -57,7 +57,7 @@
      * @param {Tuit} tuit Instance to be inserted into the database
      * @returns Promise To be notified when tuit is inserted into the database
      */
-     createTuitByUserByUser = async (uid: string, tuit: Tuit): Promise<Tuit> =>
+     createTuitByUser = async (uid: string, tuit: Tuit): Promise<Tuit> =>
          TuitModel.create({...tuit, postedBy: uid});
 
     /**
