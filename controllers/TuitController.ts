@@ -112,6 +112,6 @@
              .then((status) => res.send(status));
     
     deleteTuitById = (req: Request, res: Response) =>
-    TuitController.tuitDao.deleteTuit(req.params.tid)
+    TuitController.tuitDao.deleteTuitById(req.params.tid)
         .then((status) => res.send(status));
  };
