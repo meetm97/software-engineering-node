@@ -22,7 +22,7 @@ const findAllTuits = async () =>
   await axios.get('/tuits');
 
 const deleteTuit = async (tid: string) =>
-  await axios.delete(`/users/${tid}/tuits`);
+  await axios.delete(`/tuits/${tid}`);
 
 const createTuit = async (uid: string) =>
   await axios.delete(`/users/${uid}/tuits`);
