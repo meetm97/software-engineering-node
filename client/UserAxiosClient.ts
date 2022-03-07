@@ -25,6 +25,6 @@ const findAllTuits = async () =>
   await axios.get('/tuits');
 
 const createTuit = async (uid: string) =>
-  await axios.delete(`/users/${uid}/tuits`);
+  await axios.post(`/users/${uid}/tuits`);
 
 
