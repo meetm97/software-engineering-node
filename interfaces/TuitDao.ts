@@ -9,6 +9,6 @@ export default interface TuitDaoI {
     findTuitById (tid: string): Promise<Tuit>;
     createTuitByUser (uid: string, tuit: Tuit): Promise<Tuit>;
     updateTuit (tid: string, tuit: Tuit): Promise<any>;
-    deleteTuit (uid: string): Promise<any>;
+    deleteTuit (tid: string): Promise<any>;
     deleteTuitById (tid: string): Promise<any>;
 };
