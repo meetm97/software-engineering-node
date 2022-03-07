@@ -1,5 +1,6 @@
 import axios, { AxiosResponse } from 'axios';
 import User from "../models/User";
+import Tuit from "../models/Tuit"
 axios.defaults.baseURL = 'https://software-engineering-node-dev2.herokuapp.com/api';
 
 const findAllUsers = async () =>
@@ -24,7 +25,7 @@ const deleteTuit = async (tid: string) =>
 const findAllTuits = async () =>
   await axios.get('/tuits');
 
-const createTuit = async (uid: string) =>
+const createTuit = async (uid: string, tuit: Tuit) =>
   await axios.post(`/users/${uid}/tuits`);
 
 const deleteUsersByUsername = async (username: string) =>
