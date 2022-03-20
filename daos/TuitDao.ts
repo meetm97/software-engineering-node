@@ -78,10 +78,20 @@
      */
      deleteTuit = async (uid: string): Promise<any> =>
          TuitModel.deleteOne({_id: uid});
-     
+
+    /**
+     * Removes tuit from the database.
+     * @param {string} tid Primary key of tuit to be removed
+     * @returns Promise To be notified when user tuit is removed from the database
+     */
      deleteTuitById = async (tid: string): Promise<any> =>
          TuitModel.deleteOne({_id: tid});
-
+     
+    /**
+     * Removes tuit from the database.
+     * @param {string} tuit content of the tuit to be removed
+     * @returns Promise To be notified when user tuit is removed from the database
+     */
      deleteTuitByContent = async (tuit: string): Promise<any> =>
          TuitModel.deleteMany({tuit});
 }

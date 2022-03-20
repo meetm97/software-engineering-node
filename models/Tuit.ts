@@ -12,7 +12,6 @@ import mongoose from "mongoose";
  * @property {Date} postedOn the date on which the tuit was posted
  */
 export default interface Tuit {
-    _id?: mongoose.Schema.Types.ObjectId,
     tuit: string,
     postedBy: User,
     postedOn?: Date,

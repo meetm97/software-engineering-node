@@ -35,12 +35,15 @@
      public static getInstance = (app: Express): TuitController => {
          if(TuitController.tuitController === null) {
              TuitController.tuitController = new TuitController();
+             // RESTful User Web service API
              app.get("/api/tuits", TuitController.tuitController.findAllTuits);
              app.get("/api/users/:uid/tuits", TuitController.tuitController.findAllTuitsByUser);
              app.get("/api/tuits/:uid", TuitController.tuitController.findTuitById);
              app.post("/api/users/:uid/tuits", TuitController.tuitController.createTuitByUser);
              app.put("/api/tuits/:uid", TuitController.tuitController.updateTuit);
              app.delete("/api/tuits/:uid", TuitController.tuitController.deleteTuit);
+
+             // for testing without postman. Not RESTful
              app.get("/api/tuits/delete/:tid", TuitController.tuitController.deleteTuitById);
              app.get("/api/tuits/:tuit/delete", TuitController.tuitController.deleteTuitByContent);
          }
@@ -111,11 +114,23 @@
      deleteTuit = (req: Request, res: Response) =>
          TuitController.tuitDao.deleteTuit(req.params.uid)
              .then((status) => res.send(status));
-    
+     
+    /**
+      * @param {Request} req Represents request from client, including path
+      * parameter uid identifying teh comntent of the tuit to be removed
+      * @param {Response} res Represents response to client, including status
+      * on whether deleting a user was successful or not
+      */
      deleteTuitByContent = (req: Request, res: Response) =>
          TuitController.tuitDao.deleteTuitByContent(req.params.tuit)
               .then(status => res.send(status));
-    
+     
+    /**
+      * @param {Request} req Represents request from client, including path
+      * parameter tid identifying the comntent of the tuit to be removed
+      * @param {Response} res Represents response to client, including status
+      * on whether deleting a user was successful or not
+      */
      deleteTuitById = (req: Request, res: Response) =>
          TuitController.tuitDao.deleteTuitById(req.params.tid)
              .then((status) => res.send(status));
