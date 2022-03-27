@@ -22,6 +22,7 @@ import FollowController from './controllers/FollowController';
 import MessageController from './controllers/MessageController';
 import mongoose from "mongoose";
 var cors = require('cors')
+const session = require("express-session");
 
 // connect to database
 const connectionString = `mongodb+srv://meet:meet1234@cluster0.zntvi.mongodb.net/myFirstDatabase?retryWrites=true`;
@@ -38,6 +39,16 @@ mongoose.connection.on("open", function() {
 const app = express();
 app.use(express.json());
 app.use(cors());
+let sess = {
+  secret: process.env.SECRET,
+  cookie: {
+      secure: false
+  }
+}
+if (process.env.ENV === 'PRODUCTION') {
+  app.set('trust proxy', 1) // trust first proxy
+  sess.cookie.secure = true // serve secure cookies
+}
 
 app.get('/hello', (req, res) =>
 res.send('Hello World!'));
