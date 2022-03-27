@@ -20,6 +20,7 @@ import LikeController from "./controllers/LikeController";
 import BookMarkController from "./controllers/BookMarkController"
 import FollowController from './controllers/FollowController';
 import MessageController from './controllers/MessageController';
+import AuthenticationController from "./controllers/AuthenticationController";
 import mongoose from "mongoose";
 var cors = require('cors')
 const session = require("express-session");
@@ -38,9 +39,15 @@ mongoose.connection.on("open", function() {
 
 const app = express();
 
-app.use(cors());
+app.use(cors({
+  credentials: true,
+  origin: 'http://localhost:3000'
+}));
+const SECRET = 'process.env.SECRET';
 let sess = {
-  secret: process.env.SECRET,
+  secret: SECRET,
+  saveUninitialized: true,
+  resave: true,
   cookie: {
       secure: false
   }
@@ -49,14 +56,14 @@ if (process.env.ENV === 'PRODUCTION') {
   app.set('trust proxy', 1) // trust first proxy
   sess.cookie.secure = true // serve secure cookies
 }
+app.use(session(sess))
+app.use(express.json());
 
 app.get('/hello', (req, res) =>
 res.send('Hello World!'));
 
 app.get('/add/:a/:b', (req: Request, res: Response) =>
     res.send(req.params.a + req.params.b));
-app.use(session(sess))
-app.use(express.json());
 // create RESTful Web service API
 const userController = UserController.getInstance(app);
 const tuitController = TuitController.getInstance(app);
@@ -64,7 +71,7 @@ const likeController = LikeController.getInstance(app);
 const bookmarkController = BookMarkController.getInstance(app);
 const followController = FollowController.getInstance(app);
 const messageController = MessageController.getInstance(app);
-
+AuthenticationController(app);
 /**
  * Start a server listening at port 4000 locally
  * but use environment variable PORT on Heroku if available.
