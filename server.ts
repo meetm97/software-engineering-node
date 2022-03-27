@@ -37,7 +37,7 @@ mongoose.connection.on("open", function() {
 })
 
 const app = express();
-app.use(express.json());
+
 app.use(cors());
 let sess = {
   secret: process.env.SECRET,
@@ -55,7 +55,8 @@ res.send('Hello World!'));
 
 app.get('/add/:a/:b', (req: Request, res: Response) =>
     res.send(req.params.a + req.params.b));
-
+app.use(session(sess))
+app.use(express.json());
 // create RESTful Web service API
 const userController = UserController.getInstance(app);
 const tuitController = TuitController.getInstance(app);
