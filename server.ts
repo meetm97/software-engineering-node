@@ -41,7 +41,7 @@ const app = express();
 
 app.use(cors({
   credentials: true,
-  origin: 'http://localhost:3000'
+  origin: 'https://software-engineering-node-dev4.herokuapp.com/'
 }));
 const SECRET = 'process.env.SECRET';
 let sess = {
