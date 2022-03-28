@@ -42,7 +42,7 @@ const app = express();
 
 app.use(cors({
   credentials: true,
-  origin: ["http://localhost:3000", 'https://dulcet-kitsune-7fa4f2.netlify.app', "https://dulcet-kitsune-7fa4f2.netlify.app"]
+  origin: ["http://localhost:3000", 'https://dulcet-kitsune-7fa4f2.netlify.app', "software-engineering-node-dev4.herokuapp.com"]
 
 }));
 const SECRET = 'process.env.SECRET';
