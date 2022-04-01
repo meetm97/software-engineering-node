@@ -74,6 +74,7 @@ const bookmarkController = BookMarkController.getInstance(app);
 const followController = FollowController.getInstance(app);
 const messageController = MessageController.getInstance(app);
 AuthenticationController(app);
+
 /**
  * Start a server listening at port 4000 locally
  * but use environment variable PORT on Heroku if available.
