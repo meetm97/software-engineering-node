@@ -2,9 +2,9 @@
  * @file Implements DAO managing data storage of likes. Uses mongoose LikeModel
  * to integrate with MongoDB
  */
- import LikeDaoI from "../interfaces/LikeDao";
- import LikeModel from "../mongoose/LikeModel";
- import Like from "../models/Like";
+ import LikeDaoI from "../interfaces/LikeDaoI";
+ import LikeModel from "../mongoose/likes/LikeModel";
+ import Like from "../models/likes/Like";
  
  /**
   * @class LikeDao Implements Data Access Object managing data storage
@@ -15,15 +15,12 @@
  export default class LikeDao implements LikeDaoI {
      private static likeDao: LikeDao | null = null;
      public static getInstance = (): LikeDao => {
-         if (LikeDao.likeDao === null) {
+         if(LikeDao.likeDao === null) {
              LikeDao.likeDao = new LikeDao();
          }
          return LikeDao.likeDao;
      }
- 
-     private constructor() {
-     }
- 
+     private constructor() {}
      /**
       * Uses LikeModel to retrieve all users in like documents from likes collection liked a tuit
       * @param {string} tid Tuit's primary key
@@ -43,9 +40,9 @@
          LikeModel
              .find({likedBy: uid})
              .populate({
-                 path: "tuit",         // replace tuit reference with actual document
+                 path: "tuit",
                  populate: {
-                     path: "postedBy" // replace tuit's postedBy reference with actual user document
+                     path: "postedBy"
                  }
              })
              .exec();
@@ -67,7 +64,7 @@
          LikeModel.deleteOne({tuit: tid, likedBy: uid});
  
      /**
-      * Check if the user has already liked the tuit
+      * Find user that likes this tuit
       * @param {string} uid User's primary key
       * @param {string} tid Tuit's primary key
       * @returns Promise To be notified when like is removed from the database
