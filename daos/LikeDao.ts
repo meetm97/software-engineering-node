@@ -15,12 +15,15 @@
  export default class LikeDao implements LikeDaoI {
      private static likeDao: LikeDao | null = null;
      public static getInstance = (): LikeDao => {
-         if(LikeDao.likeDao === null) {
+         if (LikeDao.likeDao === null) {
              LikeDao.likeDao = new LikeDao();
          }
          return LikeDao.likeDao;
      }
-     private constructor() {}
+ 
+     private constructor() {
+     }
+ 
      /**
       * Uses LikeModel to retrieve all users in like documents from likes collection liked a tuit
       * @param {string} tid Tuit's primary key
@@ -40,9 +43,9 @@
          LikeModel
              .find({likedBy: uid})
              .populate({
-                 path: "tuit",
+                 path: "tuit",         // replace tuit reference with actual document
                  populate: {
-                     path: "postedBy"
+                     path: "postedBy" // replace tuit's postedBy reference with actual user document
                  }
              })
              .exec();
@@ -64,7 +67,7 @@
          LikeModel.deleteOne({tuit: tid, likedBy: uid});
  
      /**
-      * Find user that likes this tuit
+      * Check if the user has already liked the tuit
       * @param {string} uid User's primary key
       * @param {string} tid Tuit's primary key
       * @returns Promise To be notified when like is removed from the database
