@@ -18,6 +18,7 @@ import express, {Request, Response} from 'express';
 import UserController from "./controllers/UserController";
 import TuitController from "./controllers/TuitController";
 import LikeController from "./controllers/LikeController";
+import DislikeController from "./controllers/DislikeController";
 import BookMarkController from "./controllers/BookMarkController"
 import FollowController from './controllers/FollowController';
 import MessageController from './controllers/MessageController';
@@ -70,10 +71,12 @@ app.get('/add/:a/:b', (req: Request, res: Response) =>
 const userController = UserController.getInstance(app);
 const tuitController = TuitController.getInstance(app);
 const likeController = LikeController.getInstance(app);
+const dislikeController = DislikeController.getInstance(app);
 const bookmarkController = BookMarkController.getInstance(app);
 const followController = FollowController.getInstance(app);
 const messageController = MessageController.getInstance(app);
 AuthenticationController(app);
+
 
 /**
  * Start a server listening at port 4000 locally
