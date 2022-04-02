@@ -34,20 +34,16 @@
              .find({tuit: tid})
              .populate("likedBy")
              .exec();
-     /**
-      * Uses LikeModel to retrieve all tuits in like documents from likes collection liked by a user
-      * @param {string} uid User's primary key
-      * @returns Promise To be notified when the likes are retrieved from database
-      */
-     findAllTuitsLikedByUser = async (uid: string): Promise<Like[]> =>
+    
+        /**
+     * Uses LikeModel to retrieve all like document from likes collection
+     * @param {string} uid Users primary key
+     * @returns Promise To be notified when users like is retrieved from the database
+     */
+         findAllTuitsLikedByUser = async (uid: string): Promise<Like[]> =>
          LikeModel
              .find({likedBy: uid})
-             .populate({
-                 path: "tuit",         // replace tuit reference with actual document
-                 populate: {
-                     path: "postedBy" // replace tuit's postedBy reference with actual user document
-                 }
-             })
+             .populate("tuit")
              .exec();
      /**
       * Inserts like instance into the database
