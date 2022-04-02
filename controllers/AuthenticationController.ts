@@ -49,7 +49,7 @@
       * @param {Response} res Represents response to client, including the
       * body formatted as JSON object containing the user object
       */
-     const register = async (req: Request, res: Response) => {
+     const signup = async (req: Request, res: Response) => {
          const newUser = req.body;
          const password = newUser.password;
          const hash = await bcrypt.hash(password, saltRounds);
@@ -104,7 +104,7 @@
      }
  
      app.post("/api/auth/login", login);
-     app.post("/api/auth/register", register);
+     app.post("/api/auth/signup", signup);
      app.post("/api/auth/profile", profile);
      app.post("/api/auth/logout", logout);
  }
